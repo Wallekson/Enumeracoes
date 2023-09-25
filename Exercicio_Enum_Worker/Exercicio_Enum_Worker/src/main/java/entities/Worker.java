@@ -9,19 +9,19 @@ import java.util.List;
 public class Worker {
 
     private String name;
-    private WorkerLevel;
+    private WorkerLevel level;
     private Double baseSalary;
 
-    private Departament departament;
+    private Department department;
     private List<HourContract> contracts = new ArrayList<>(); // composição TEM MUITOS em um List não inclui no construtor
 
     public Worker(){
     }
 
-    public Worker(String name, Double baseSalary, Departament departament) {
+    public Worker(String name, Double baseSalary, Department department) {
         this.name = name;
         this.baseSalary = baseSalary;
-        this.departament = departament;
+        this.department = department;
     }
 
     public String getName() {
@@ -40,12 +40,12 @@ public class Worker {
         this.baseSalary = baseSalary;
     }
 
-    public Departament getDepartament() {
-        return departament;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartament(Departament departament) {
-        this.departament = departament;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public List<HourContract> getContracts() {
