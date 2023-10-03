@@ -25,6 +25,9 @@ public class Order {
         this.client = client;
     }
 
+    public Order(OrderStatus orderStatus, Client client) {
+    }
+
     public Date getMoment() {
         return moment;
     }
