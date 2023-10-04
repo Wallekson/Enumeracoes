@@ -21,30 +21,43 @@ public class Program {
 
         System.out.println("Enter cliente data:");
         System.out.print("Name: ");
-        String clientName = sc.nextLine();
+        String name = sc.nextLine();
         System.out.print("Email: ");
-        String clientEmail = sc.nextLine();
+        String email = sc.nextLine();
         System.out.print("Birth date (DD/MM/YYYY): ");
-        Date clientBirthDate = sdf.parse(sc.next());
+        Date birthDate = sdf.parse(sc.next());
+
+        Client client = new Client(name,email,birthDate);
+
         System.out.println("Enter order data:");
         System.out.print("Status: ");
-        String orderStatus = sc.nextLine();
-        Order order = new Order(OrderStatus.valueOf(orderStatus), new Client(clientName,clientEmail,clientBirthDate));
+        OrderStatus orderStatus = OrderStatus.valueOf(sc.nextLine());
+
+        Order order = new Order(new Date(),orderStatus,client); // instanciei objeto Order ao client
+
 
         System.out.print("How many items to this order? ");
         int n = sc.nextInt();
 
-        for (int i = 0; i < n; i ++){
-            System.out.println("Enter #" + i + 1 +" item data");
+        for (int i = 1; i <= n; i ++){
+            System.out.println("Enter #" + i +" item data");
             System.out.print("Product name: ");
+            sc.nextLine();
             String productName = sc.nextLine();
             System.out.print("Product price: ");
             double productPrice = sc.nextDouble();
             System.out.print("Quantity: ");
             int quant = sc.nextInt();
-            OrderItem orderItem = new OrderItem(quant,productPrice,productName);
+
+            Product product = new Product(productName,productPrice);
+            OrderItem it = new OrderItem(quant,productPrice,product); // instanciei o product ao OrdemItem
+
+            order.addItem(it);
             
         }
+
+        System.out.println();
+        System.out.println(order);
 
         sc.close();
     }

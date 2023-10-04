@@ -25,9 +25,6 @@ public class Order {
         this.client = client;
     }
 
-    public Order(OrderStatus orderStatus, Client client) {
-    }
-
     public Date getMoment() {
         return moment;
     }
@@ -52,10 +49,6 @@ public class Order {
         this.client = client;
     }
 
-    public List<OrderItem> getItems() {
-        return items;
-    }
-
     public void addItem(OrderItem item){
         items.add(item);
     }
@@ -66,8 +59,8 @@ public class Order {
 
     public double total(OrderItem item){
         double sum = 0;
-        for (OrderItem c: items){
-            sum+= c.subTotal();
+        for (OrderItem it: items){
+            sum+= it.subTotal();
         }
         return sum;
     }
